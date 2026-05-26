@@ -22,3 +22,89 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Markdown code blocks */
+.prose pre {
+  background-color: var(--color-bg-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 0.75rem 0;
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+
+.prose :not(pre) > code {
+  background-color: var(--color-surface);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-border);
+}
+
+.prose p {
+  margin: 0.5rem 0;
+}
+
+.prose p:first-child {
+  margin-top: 0;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+.prose ul, .prose ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin: 0.25rem 0;
+}
+
+.prose blockquote {
+  border-left: 2px solid var(--color-accent);
+  padding-left: 1rem;
+  margin: 0.5rem 0;
+  color: var(--color-text-muted);
+}
+
+.prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  margin: 1rem 0 0.5rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.prose h1 { font-size: 1.25rem; }
+.prose h2 { font-size: 1.125rem; }
+.prose h3 { font-size: 1rem; }
+
+.prose hr {
+  border-color: var(--color-border);
+  margin: 1rem 0;
+}
+
+.prose table {
+  border-collapse: collapse;
+  margin: 0.5rem 0;
+  font-size: 0.8125rem;
+}
+
+.prose th, .prose td {
+  border: 1px solid var(--color-border);
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+}
+
+.prose th {
+  background-color: var(--color-surface);
+}

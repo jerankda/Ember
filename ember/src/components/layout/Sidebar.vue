@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useConversationsStore } from '@/stores/conversations'
 
@@ -7,6 +8,10 @@ const emit = defineEmits<{ toggle: [] }>()
 
 const router = useRouter()
 const conversations = useConversationsStore()
+
+onMounted(() => {
+  conversations.fetchAll()
+})
 
 function newChat() {
   conversations.create().then((conv) => {
