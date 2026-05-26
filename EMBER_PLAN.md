@@ -290,14 +290,14 @@ All routes prefixed with `/api/`. Vite dev server proxies `/api` → `localhost:
 
 ### Phase 1 — Foundation
 
-- [ ] Scaffold Vite + Vue + TypeScript project
-- [ ] Set up Hono backend with basic route structure
-- [ ] Configure better-sqlite3 + Drizzle, run migrations
-- [ ] Implement design tokens in Tailwind config
-- [ ] Add Geist Sans + Geist Mono fonts
-- [ ] Build AppShell layout (sidebar + main area)
-- [ ] Set up Vite proxy to Hono
-- [ ] Settings page: store/retrieve OpenRouter API key
+- [x] Scaffold Vite + Vue + TypeScript project
+- [x] Set up Hono backend with basic route structure
+- [x] Configure better-sqlite3 + Drizzle, run migrations
+- [x] Implement design tokens in Tailwind config
+- [x] Add Geist Sans + Geist Mono fonts
+- [x] Build AppShell layout (sidebar + main area)
+- [x] Set up Vite proxy to Hono
+- [x] Settings page: store/retrieve OpenRouter API key
 
 ### Phase 2 — Core Chat
 
