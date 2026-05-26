@@ -6,13 +6,11 @@ import AppShell from '@/components/layout/AppShell.vue'
 import ChatView from '@/components/chat/ChatView.vue'
 import ChatInput from '@/components/chat/ChatInput.vue'
 import { useStreaming } from '@/composables/useStreaming'
-import { useSettingsStore } from '@/stores/settings'
 import { useConversationsStore } from '@/stores/conversations'
 import type { Message } from '@/components/chat/ChatMessage.vue'
 
 const route = useRoute()
 const router = useRouter()
-const settings = useSettingsStore()
 const conversationsStore = useConversationsStore()
 const { isStreaming, connect } = useStreaming()
 
@@ -107,7 +105,6 @@ async function handleSend(content: string) {
       conversationId: conversationId.value,
       messages: chatMessages,
       model: model.value,
-      apiKey: settings.apiKey,
     },
     (token) => {
       fullContent += token
