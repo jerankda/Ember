@@ -1,0 +1,1 @@
+{"root":["./server/index.ts","./server/db/index.ts","./server/db/migrate.ts","./server/db/schema.ts"],"version":"6.0.3"}
