@@ -5,52 +5,48 @@
 > - Commit and push to GitHub after every step — keep commits small and atomic
 > - This plan is the source of truth; read it at the start of every session to pick up where you left off
 
-A local, polished AI chat UI for OpenRouter — warm minimal design, built with Vue + Hono + SQLite.
+A local, polished AI chat UI for OpenRouter — dark Claude-inspired design, built with Vue + Hono + SQLite.
 
 ---
 
-## Design System — "Warm Minimal"
+## Design System — Dark Claude-Inspired
 
-Inspired by Claude.ai's clean typography and spacing, pushed further with warmth and subtle art direction.
+Dark, minimal, and quiet. Serif typography, low-contrast surfaces, amber accents.
 
 ### Fonts
 
 | Font | Usage |
 |---|---|
-| Geist Sans | Body, UI, inputs |
-| Geist Mono | Code blocks, message metadata |
+| Lora | Body, UI, headings |
+| JetBrains Mono | Code blocks, message metadata |
 
 ### Color Tokens
 
 | Token | Value | Usage |
 |---|---|---|
-| `--bg` | `#FAFAF7` | Page background |
-| `--surface` | `#FFFFFF` | Cards, inputs, modals |
-| `--bg-muted` | `#F3F2EE` | Sidebar, hover states, code block bg |
-| `--text` | `#1C1917` | Primary text (warm black) |
-| `--text-muted` | `#78716C` | Secondary text, timestamps |
-| `--accent` | `#C2410C` | Burnt terracotta — primary actions, links, active states |
-| `--accent-soft` | `#FED7AA` | Soft peach — highlights, subtle badges |
-| `--border` | `#E7E5E4` | Dividers, input borders |
-| `--danger` | `#B91C1C` | Error states, destructive actions |
+| `--bg` | `#141414` | Page background |
+| `--surface` | `#1C1C1C` | Cards, modals, elevated surfaces |
+| `--bg-muted` | `#101010` | Sidebar, deepest background |
+| `--text` | `#E8E6E3` | Primary text (warm off-white) |
+| `--text-muted` | `#7A7A7A` | Secondary text, timestamps, hints |
+| `--accent` | `#D97706` | Amber — primary actions, links, focus states |
+| `--accent-soft` | `#352208` | Dark amber — badges, subtle highlights |
+| `--border` | `#2A2A2A` | Dividers, input borders |
+| `--danger` | `#EF4444` | Error states, destructive actions |
 
-### Artsy Touches
+### Details
 
-Beyond Claude's clean minimalism:
-
-- **Subtle grain texture** — CSS noise overlay at ~2% opacity on `--bg`, gives the page a tactile, printed-paper feel
-- **Ambient warm gradient** — very slow (30s cycle) subtle gradient shift in the chat area background, between `#FAFAF7` and a barely-perceptible warm peach
-- **Cinematic message entrance** — messages fade in with a slight upward drift (0.3s ease-out), not just popping in
-- **Dramatic empty states** — large typographic statements with generous whitespace (e.g. "Begin." in Geist Sans 48pt, `--text-muted`)
-- **Custom warm syntax theme** — Shiki theme with warm-tinted backgrounds and terracotta-tinted keywords
-- **Model badges** — refined pill badges with `--accent-soft` background, Geist Mono font, tracking widened
+- **Cinematic message entrance** — messages fade in with a slight upward drift (0.3s ease-out)
+- **Dramatic empty states** — large italic serif typography with generous whitespace
+- **Model badges** — subtle pill badges with `--accent-soft` background, mono font
+- **No grain, no gradients** — clean and quiet, surfaces distinguished by subtle brightness shifts only
 
 ### Layout
 
-- **Sidebar** (~280px, collapsible) — conversation list, system prompt selector, settings
+- **Sidebar** (~260px, collapsible) — conversation list, system prompt selector, settings
 - **Main area** — centered chat column (~720px max-width), generous vertical padding
 - **Input area** — full-width textarea with attachment tray, model selector dropdown, send button
-- **No chrome waste** — minimal borders, no heavy shadows, depth through background color shifts only
+- **No chrome waste** — minimal borders, no shadows, depth through background color shifts only
 
 ---
 
