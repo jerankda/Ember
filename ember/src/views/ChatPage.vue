@@ -4,10 +4,10 @@ import AppShell from '@/components/layout/AppShell.vue'
 
 <template>
   <AppShell>
-    <div class="flex-1 ambient-gradient flex items-center justify-center">
+    <div class="flex-1 flex items-center justify-center">
       <div class="text-center">
-        <h1 class="text-5xl font-semibold text-text-muted mb-4">Begin.</h1>
-        <p class="text-text-muted">Start a new conversation or select one from the sidebar</p>
+        <h1 class="text-5xl italic text-text-muted mb-4">Ember</h1>
+        <p class="text-text-muted text-sm">What would you like to create?</p>
       </div>
     </div>
   </AppShell>

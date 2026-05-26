@@ -9,17 +9,6 @@
   }
 }
 
-@keyframes ambient-gradient {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
 .message-enter {
   animation: message-enter 0.3s ease-out forwards;
-}
-
-.ambient-gradient {
-  background: linear-gradient(135deg, #FAFAF7, #FEF5F0, #FAFAF7);
-  background-size: 200% 200%;
-  animation: ambient-gradient 30s ease infinite;
 }

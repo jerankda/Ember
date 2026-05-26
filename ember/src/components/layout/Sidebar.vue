@@ -19,30 +19,32 @@ function newChat() {
   <Transition name="slide">
     <aside
       v-show="open"
-      class="w-[280px] bg-bg-muted border-r border-border flex flex-col shrink-0"
+      class="w-[260px] bg-bg-muted border-r border-border flex flex-col shrink-0"
     >
       <div class="p-4 flex items-center justify-between border-b border-border">
-        <span class="font-semibold text-text tracking-wide text-sm">Ember</span>
+        <span class="text-text tracking-wide text-sm">Ember</span>
         <button
           @click="emit('toggle')"
-          class="text-text-muted hover:text-text transition-colors text-sm"
+          class="text-text-muted hover:text-text transition-colors"
         >
-          ◂
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 4l4 4-4 4" />
+          </svg>
         </button>
       </div>
       <div class="p-3">
         <button
           @click="newChat"
-          class="w-full px-3 py-2 bg-surface border border-border rounded-lg text-sm text-text hover:bg-accent-soft/30 transition-colors"
+          class="w-full px-3 py-1.5 bg-surface border border-border rounded-md text-sm text-text-muted hover:text-text hover:border-text-muted/30 transition-colors text-left"
         >
-          + New chat
+          New chat
         </button>
       </div>
-      <div class="flex-1 overflow-y-auto p-3 space-y-1">
+      <div class="flex-1 overflow-y-auto px-3 space-y-0.5">
         <div
           v-for="conv in conversations.sorted"
           :key="conv.id"
-          class="px-3 py-2 rounded-lg text-sm text-text-muted hover:bg-surface cursor-pointer transition-colors truncate"
+          class="px-3 py-1.5 rounded-md text-sm text-text-muted hover:bg-surface cursor-pointer transition-colors truncate"
           @click="router.push(`/c/${conv.id}`)"
         >
           {{ conv.title }}
@@ -51,7 +53,7 @@ function newChat() {
       <div class="p-3 border-t border-border">
         <button
           @click="router.push('/settings')"
-          class="w-full px-3 py-2 text-sm text-text-muted hover:text-text transition-colors text-left"
+          class="w-full px-3 py-1.5 text-sm text-text-muted hover:text-text transition-colors text-left"
         >
           Settings
         </button>
