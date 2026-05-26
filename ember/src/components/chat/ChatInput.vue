@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { ref, nextTick } from 'vue'
+import ModelSelector from './ModelSelector.vue'
 
 defineProps<{
   disabled: boolean
+  modelValue: string
 }>()
 
 const emit = defineEmits<{
   send: [content: string]
+  'update:modelValue': [value: string]
 }>()
 
 const input = ref('')
@@ -41,16 +44,24 @@ function handleKeydown(e: KeyboardEvent) {
   <div class="border-t border-border bg-bg">
     <div class="max-w-3xl mx-auto px-6 py-4">
       <div class="flex items-end gap-3">
-        <textarea
-          ref="textareaRef"
-          v-model="input"
-          :disabled="disabled"
-          rows="1"
-          placeholder="Tell Ember what to build..."
-          class="flex-1 bg-surface border border-border rounded-xl px-4 py-3 text-sm text-text placeholder:text-text-muted resize-none outline-none focus:border-accent/50 transition-colors font-serif leading-relaxed max-h-[200px]"
-          @input="resizeTextarea"
-          @keydown="handleKeydown"
-        />
+        <div class="flex-1 flex flex-col gap-2">
+          <div class="flex items-center gap-2">
+            <ModelSelector
+              :model-value="modelValue"
+              @update:model-value="emit('update:modelValue', $event)"
+            />
+          </div>
+          <textarea
+            ref="textareaRef"
+            v-model="input"
+            :disabled="disabled"
+            rows="1"
+            placeholder="Tell Ember what to build..."
+            class="flex-1 bg-surface border border-border rounded-xl px-4 py-3 text-sm text-text placeholder:text-text-muted resize-none outline-none focus:border-accent/50 transition-colors font-serif leading-relaxed max-h-[200px]"
+            @input="resizeTextarea"
+            @keydown="handleKeydown"
+          />
+        </div>
         <button
           :disabled="disabled || !input.trim()"
           class="shrink-0 w-10 h-10 rounded-xl bg-accent text-bg font-bold flex items-center justify-center hover:bg-accent/90 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"

@@ -92,8 +92,7 @@ async function handleSend(content: string) {
   let fullContent = ''
 
   const chatMessages = messages.value
-    .filter((m) => m.role !== 'assistant' || m.content)
-    .slice(0, -1)
+    .filter((m) => m.role !== 'assistant' || m.content.length > 0)
     .map((m) => ({
       role: m.role,
       content: m.content,
@@ -148,6 +147,8 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeydown))
     />
     <ChatInput
       :disabled="isStreaming"
+      :model-value="model"
+      @update:model-value="model = $event"
       @send="handleSend"
     />
   </AppShell>
