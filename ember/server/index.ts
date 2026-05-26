@@ -5,12 +5,39 @@ import { stream } from 'hono/streaming'
 import { v4 as uuid } from 'uuid'
 import { eq, desc } from 'drizzle-orm'
 import { db } from './db'
-import { conversations, messages } from './db/schema'
+import { conversations, messages, settings } from './db/schema'
 
 const app = new Hono()
 app.use('*', cors())
 
+function getApiKey(): string | undefined {
+  const row = db.select().from(settings).where(eq(settings.key, 'apiKey')).get()
+  return row?.value || undefined
+}
+
+function maskKey(key: string): string {
+  if (key.length <= 7) return key
+  return key.slice(0, 7) + '...' + key.slice(-4)
+}
+
 app.get('/api/health', (c) => c.json({ status: 'ok' }))
+
+app.get('/api/settings', (c) => {
+  const key = getApiKey()
+  return c.json(key ? { hasKey: true, keyPreview: maskKey(key) } : { hasKey: false })
+})
+
+app.patch('/api/settings', async (c) => {
+  const { apiKey } = await c.req.json()
+  if (apiKey) {
+    db.insert(settings).values({ key: 'apiKey', value: apiKey })
+      .onConflictDoUpdate({ target: settings.key, set: { value: apiKey } })
+      .run()
+    return c.json({ hasKey: true, keyPreview: maskKey(apiKey) })
+  }
+  db.delete(settings).where(eq(settings.key, 'apiKey')).run()
+  return c.json({ hasKey: false })
+})
 
 app.get('/api/conversations', async (c) => {
   const result = db
@@ -67,9 +94,10 @@ app.delete('/api/conversations/:id', async (c) => {
 })
 
 app.post('/api/chat', async (c) => {
-  const { conversationId, messages: chatMessages, model, apiKey } = await c.req.json()
+  const { conversationId, messages: chatMessages, model } = await c.req.json()
+  const apiKey = getApiKey()
 
-  if (!apiKey) return c.json({ error: 'API key required' }, 400)
+  if (!apiKey) return c.json({ error: 'No API key configured. Set one in Settings.' }, 400)
 
   const userContent = chatMessages[chatMessages.length - 1]?.content || ''
 
@@ -165,9 +193,9 @@ app.post('/api/chat', async (c) => {
 })
 
 app.get('/api/models', async (c) => {
-  const apiKey = c.req.query('apiKey')
+  const apiKey = getApiKey()
 
-  if (!apiKey) return c.json({ error: 'API key required' }, 400)
+  if (!apiKey) return c.json({ error: 'No API key configured. Set one in Settings.' }, 400)
 
   const response = await fetch('https://openrouter.ai/api/v1/models', {
     headers: {
