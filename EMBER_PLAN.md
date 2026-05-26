@@ -297,15 +297,15 @@ All routes prefixed with `/api/`. Vite dev server proxies `/api` → `localhost:
 
 ### Phase 2 — Core Chat
 
-- [ ] OpenRouter proxy route with SSE streaming
-- [ ] ChatInput component (textarea, send button)
-- [ ] ChatMessage component (markdown rendering via markdown-it)
-- [ ] Shiki syntax highlighting with custom warm theme
-- [ ] ChatView component (message list, auto-scroll)
-- [ ] Conversation CRUD routes + sidebar list
-- [ ] Auto-generate conversation title from first message
-- [ ] useStreaming composable (SSE parsing, token accumulation)
-- [ ] StreamingIndicator component
+- [x] OpenRouter proxy route with SSE streaming
+- [x] ChatInput component (textarea, send button)
+- [x] ChatMessage component (markdown rendering via markdown-it)
+- [x] Shiki syntax highlighting with custom warm theme
+- [x] ChatView component (message list, auto-scroll)
+- [x] Conversation CRUD routes + sidebar list
+- [x] Auto-generate conversation title from first message
+- [x] useStreaming composable (SSE parsing, token accumulation)
+- [x] StreamingIndicator component
 
 ### Phase 3 — Features
 
